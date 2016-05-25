@@ -2,7 +2,8 @@ exports = typeof window === 'undefined' ? global : window;
 
 exports.arraysAnswers = {
   indexOf: function(arr, item) {
-     return arr.indexOf(item);
+    var res=arr.indexOf(item);
+     return res;
 
   },
 
@@ -102,17 +103,20 @@ exports.arraysAnswers = {
   },
 
   duplicates: function(arr) {
-    var x;
-    for(var i in arr)
+  var dup=[];
+  var len=arr.length;
+  var srt=arr.sort();
+  for(var i=0;i<len;i++)
+  {
+    if(srt[i]==srt[i+1])
     {
-      for (var j in arr)
-      {
-        if(arr[j]===arr[i] && i!=j)
-          x.push(arr[j]);
-      }
+      dup.push(srt[i]);
+      i++;
+      
     }
-    return x;
+  }
 
+return dup;
   },
 
   square: function(arr) {
@@ -128,16 +132,16 @@ return arr;
 
   findAllOccurrences: function(arr, target) {
 
- var s;
-    {
+ var s=[];
+    
       for (var i in arr)
       {
-        if(arr[i]===target)
+        if(arr[i]==target)
         {
-          s.push(arr[i]);
+          s.push(i);
         }
       }
-    }
+    
     return s;
 
   }
